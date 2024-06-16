@@ -1,15 +1,21 @@
 // src/components/Quiz.js
 import React, { useEffect, useState } from 'react';
 import axios from '../axiosConfig';
+import { useNavigate } from 'react-router-dom';
 
 function Quiz() {
     const [questions, setQuestions] = useState([]);
     const [answers, setAnswers] = useState({});
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchQuestions = async () => {
-            const response = await axios.get('/api/questions/');
-            setQuestions(response.data);
+            try {
+                const response = await axios.get('/api/questions/');
+                setQuestions(response.data);
+            } catch (error) {
+                console.error('Error fetching questions', error);
+            }
         };
         fetchQuestions();
     }, []);
@@ -20,12 +26,12 @@ function Quiz() {
 
     const handleSubmit = async () => {
         try {
-            await axios.post('/api/results/', answers, {
+            await axios.post('/api/submit_quiz/', { answers }, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`,
                 },
             });
-            // Handle post submission logic
+            navigate('/result');
         } catch (error) {
             console.error('Error submitting quiz', error);
         }
@@ -41,6 +47,9 @@ function Quiz() {
                         <button
                             key={choice.id}
                             onClick={() => handleAnswer(question.id, choice.id)}
+                            style={{
+                                backgroundColor: answers[question.id] === choice.id ? 'lightblue' : '',
+                            }}
                         >
                             {choice.text}
                         </button>
