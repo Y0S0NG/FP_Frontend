@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from '../axiosConfig';
 import { useNavigate } from 'react-router-dom';
+import './Quiz.css';  // 引入CSS文件
 
 function Quiz() {
     const [questions, setQuestions] = useState([]);
@@ -26,37 +27,38 @@ function Quiz() {
 
     const handleSubmit = async () => {
         try {
-            await axios.post('/api/submit_quiz/', { answers }, {
+            const response = await axios.post('/api/submit_quiz/', { answers }, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`,
                 },
             });
-            navigate('/result');
+            console.log(response.data); // 处理响应数据
+            navigate('/result'); // 提交后跳转到结果页面
         } catch (error) {
             console.error('Error submitting quiz', error);
         }
     };
 
     return (
-        <div>
+        <div className="quiz-container">
             <h2>Quiz</h2>
             {questions.map((question) => (
-                <div key={question.id}>
-                    <p>{question.text}</p>
-                    {question.choices.map((choice) => (
-                        <button
-                            key={choice.id}
-                            onClick={() => handleAnswer(question.id, choice.id)}
-                            style={{
-                                backgroundColor: answers[question.id] === choice.id ? 'lightblue' : '',
-                            }}
-                        >
-                            {choice.text}
-                        </button>
-                    ))}
+                <div key={question.id} className="question-container">
+                    <p className="question-text">{question.text}</p>
+                    <div className="choices-container">
+                        {question.choices.map((choice) => (
+                            <button
+                                key={choice.id}
+                                onClick={() => handleAnswer(question.id, choice.id)}
+                                className={`choice-button ${answers[question.id] === choice.id ? 'selected' : ''}`}
+                            >
+                                {choice.text}
+                            </button>
+                        ))}
+                    </div>
                 </div>
             ))}
-            <button onClick={handleSubmit}>Submit</button>
+            <button onClick={handleSubmit} className="submit-button">Submit</button>
         </div>
     );
 }
