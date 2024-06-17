@@ -1,39 +1,84 @@
-.choice-button {
-    background-color: transparent; /* 未选中时颜色透明 */
-    border: 1px solid #ccc;
-    padding: 10px 20px;
-    margin: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 4px;
-    color: #000; /* 按钮文本颜色 */
+.quiz-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(249, 249, 249, 0.9); /* 透明背景色，突出文字内容 */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    background-image: url('/public/background.jpg'); /* 背景图片路径 */
+    background-size: cover;
+    background-position: center;
 }
 
-.choice-button.selected {
-    background-color: blue; /* 选中时背景颜色为蓝色 */
-    color: white; /* 选中时文本颜色为白色 */
+body {
+    background-image: url('/public/background.jpg'); /* 背景图片路径 */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* 背景图片固定 */
+    margin: 0;
+    font-family: Arial, sans-serif; /* 全局字体 */
 }
 
-.choices-container {
-    display: flex;
-    flex-wrap: wrap;
+h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.error-message {
+    color: red;
+    text-align: center;
+    margin-bottom: 10px;
 }
 
 .question-container {
     margin-bottom: 20px;
 }
 
+.question-text {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.choices-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.choice-button {
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.choice-button:hover {
+    background-color: #f1f1f1;
+}
+
+.choice-button.selected {
+    background-color: #d0ebff;
+    border-color: #7abaff;
+}
+
 .submit-button {
-    background-color: #008cba;
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #4caf50;
     color: white;
-    padding: 10px 20px;
     border: none;
+    border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
-    border-radius: 4px;
-    margin-top: 20px;
+    transition: background-color 0.3s;
 }
 
 .submit-button:hover {
-    background-color: #006994;
+    background-color: #45a049;
 }

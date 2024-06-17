@@ -7,6 +7,7 @@ import './Quiz.css';  // 引入CSS文件
 function Quiz() {
     const [questions, setQuestions] = useState([]);
     const [answers, setAnswers] = useState({});
+    const [error, setError] = useState('');
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -35,13 +36,18 @@ function Quiz() {
             console.log(response.data); // 处理响应数据
             navigate('/result'); // 提交后跳转到结果页面
         } catch (error) {
-            console.error('Error submitting quiz', error);
+            if (error.response && error.response.data && error.response.data.error) {
+                setError(error.response.data.error); // 设置错误消息
+            } else {
+                console.error('Error submitting quiz', error);
+            }
         }
     };
 
     return (
         <div className="quiz-container">
-            <h2>Quiz</h2>
+            <h2>分院测试</h2>
+            {error && <p className="error-message">{error}</p>}
             {questions.map((question) => (
                 <div key={question.id} className="question-container">
                     <p className="question-text">{question.text}</p>
