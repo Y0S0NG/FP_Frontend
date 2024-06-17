@@ -1,0 +1,75 @@
+.quizContainer {
+    width: 100%;
+    max-width: 600px;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.quizContainer h2 {
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.errorMessage {
+    color: red;
+    margin-bottom: 20px;
+}
+
+.questionContainer {
+    margin-bottom: 20px;
+}
+
+.questionText {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.choicesContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.choiceButton {
+    width: 100%;
+    max-width: 400px;
+    padding: 12px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+    box-sizing: border-box;
+}
+
+.choiceButton:hover {
+    background-color: #f1f1f1;
+}
+
+.choiceButton.selected {
+    background-color: #d0ebff;
+    border-color: #007bff;
+}
+
+.submitButton {
+    width: 100%;
+    max-width: 400px;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    box-sizing: border-box;
+}
+
+.submitButton:hover {
+    background-color: #0056b3;
+}

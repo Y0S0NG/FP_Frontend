@@ -1,8 +1,7 @@
-// src/components/Quiz.js
 import React, { useEffect, useState } from 'react';
 import axios from '../axiosConfig';
 import { useNavigate } from 'react-router-dom';
-import './Quiz.css';  // 引入CSS文件
+import styles from './Quiz.module.css';  // 使用CSS模块化
 
 function Quiz() {
     const [questions, setQuestions] = useState([]);
@@ -45,18 +44,18 @@ function Quiz() {
     };
 
     return (
-        <div className="quiz-container">
-            <h2>分院测试</h2>
-            {error && <p className="error-message">{error}</p>}
+        <div className={styles.quizContainer}>
+            <h2>Quiz</h2>
+            {error && <p className={styles.errorMessage}>{error}</p>}
             {questions.map((question) => (
-                <div key={question.id} className="question-container">
-                    <p className="question-text">{question.text}</p>
-                    <div className="choices-container">
+                <div key={question.id} className={styles.questionContainer}>
+                    <p className={styles.questionText}>{question.text}</p>
+                    <div className={styles.choicesContainer}>
                         {question.choices.map((choice) => (
                             <button
                                 key={choice.id}
                                 onClick={() => handleAnswer(question.id, choice.id)}
-                                className={`choice-button ${answers[question.id] === choice.id ? 'selected' : ''}`}
+                                className={`${styles.choiceButton} ${answers[question.id] === choice.id ? styles.selected : ''}`}
                             >
                                 {choice.text}
                             </button>
@@ -64,7 +63,7 @@ function Quiz() {
                     </div>
                 </div>
             ))}
-            <button onClick={handleSubmit} className="submit-button">Submit</button>
+            <button onClick={handleSubmit} className={styles.submitButton}>Submit</button>
         </div>
     );
 }
