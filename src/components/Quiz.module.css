@@ -1,3 +1,17 @@
+body {
+    /* 设置背景图片 */
+    background-image: url('firefly.jpg');
+
+    /* 让背景图片覆盖整个页面 */
+    background-size: cover;
+
+    /* 背景图片不重复 */
+    background-repeat: no-repeat;
+
+    /* 背景图片固定，滚动条滑动时背景不会移动 */
+    background-attachment: fixed;
+}
+
 .quizContainer {
     width: 100%;
     max-width: 600px;
@@ -6,6 +20,10 @@
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    margin-left: -300px;
 }
 
 .quizContainer h2 {
