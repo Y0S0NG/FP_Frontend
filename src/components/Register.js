@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from '../axiosConfig';
 import { useNavigate } from 'react-router-dom';
+import styles from './Login.module.css';
 
 function Register() {
     const [username, setUsername] = useState('');
@@ -9,7 +10,7 @@ function Register() {
 
     const handleRegister = async () => {
         try {
-            await axios.post('/register/', { username, password });
+            await axios.post('/api/register/', { username, password });
             navigate('/login');
         } catch (error) {
             console.error('Registration failed', error);
@@ -17,21 +18,23 @@ function Register() {
     };
 
     return (
-        <div>
+        <div className={styles.loginContainer}>
             <h2>Register</h2>
             <input
                 type="text"
                 placeholder="Username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
+                className={styles.inputField}
             />
             <input
                 type="password"
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                className={styles.inputField}
             />
-            <button onClick={handleRegister}>Register</button>
+            <button onClick={handleRegister} className={styles.button}>Register</button>
         </div>
     );
 }
