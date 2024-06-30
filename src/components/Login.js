@@ -27,14 +27,14 @@ function Login() {
             {error && <p className={styles.errorMessage}>{error}</p>} {/* 显示错误消息 */}
             <input
                 type="text"
-                placeholder="ComputingID"
+                placeholder="姓名-computingID"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 className={styles.inputField}
             />
             <input
                 type="password"
-                placeholder="Password"
+                placeholder="密码"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className={styles.inputField}

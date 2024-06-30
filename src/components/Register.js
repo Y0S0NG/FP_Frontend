@@ -22,14 +22,14 @@ function Register() {
             <h2>Register</h2>
             <input
                 type="text"
-                placeholder="Username"
+                placeholder="请使用 '姓名-computingID' 的格式，否则问卷答案无效"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 className={styles.inputField}
             />
             <input
                 type="password"
-                placeholder="Password"
+                placeholder="密码"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className={styles.inputField}
