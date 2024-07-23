@@ -62,8 +62,8 @@ function Quiz() {
                         {question.choices.map((choice) => (
                             <button
                                 key={choice.id}
-                                onClick={() => handleAnswer(question.id, choice.id)}
-                                className={`${styles.choiceButton} ${answers[question.id] === choice.id ? styles.selected : ''}`}
+                                onClick={() => handleAnswer(question.id, choice.id, question.isMultipleChoice)}
+                                className={`${styles.choiceButton} ${question.isMultipleChoice ? (answers[question.id]?.includes(choice.id) ? styles.selected : '') : (answers[question.id] === choice.id ? styles.selected : '')}`}
                             >
                                 {choice.text}
                             </button>
