@@ -21,8 +21,16 @@ function Quiz() {
         fetchQuestions();
     }, []);
 
-    const handleAnswer = (questionId, choiceId) => {
-        setAnswers({ ...answers, [questionId]: choiceId });
+    const handleAnswer = (questionId, choiceId, isMultipleChoice) => {
+        if (isMultipleChoice) {
+            const currentAnswers = answers[questionId] || [];
+            const updatedAnswers = currentAnswers.includes(choiceId)
+                ? currentAnswers.filter(id => id !== choiceId)
+                : [...currentAnswers, choiceId];
+            setAnswers({ ...answers, [questionId]: updatedAnswers });
+        } else {
+            setAnswers({ ...answers, [questionId]: choiceId });
+        }
     };
 
     const handleSubmit = async () => {
