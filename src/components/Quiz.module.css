@@ -1,15 +1,5 @@
 body {
-    /* 设置背景图片 */
-    background-image: url('background-image.jpeg');
 
-    /* 让背景图片覆盖整个页面 */
-    background-size: cover;
-
-    /* 背景图片不重复 */
-    background-repeat: no-repeat;
-
-    /* 背景图片固定，滚动条滑动时背景不会移动 */
-    background-attachment: fixed;
 }
 
 .quizContainer {

@@ -53,7 +53,7 @@ function Quiz() {
 
     return (
         <div className={styles.quizContainer}>
-            <h2>Quiz</h2>
+            <h2>请完成以下所有问题</h2>
             {error && <p className={styles.errorMessage}>{error}</p>}
             {questions.map((question) => (
                 <div key={question.id} className={styles.questionContainer}>
