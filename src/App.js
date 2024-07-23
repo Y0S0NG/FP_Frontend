@@ -4,6 +4,7 @@ import Login from './components/Login';
 import Quiz from './components/Quiz';
 import Result from './components/Result';
 import Register from './components/Register';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function App() {
