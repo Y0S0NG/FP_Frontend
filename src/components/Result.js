@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Result.module.css';
-import gifAnimation from './animation.gif'; // 引用 GIF 文件
+import gifAnimation from './Thank_You.gif'; // 引用 GIF 文件
 
 function GifDisplay() {
     return (
