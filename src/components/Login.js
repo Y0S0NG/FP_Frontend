@@ -3,12 +3,15 @@ import axios from '../axiosConfig';
 import { useNavigate, Link } from 'react-router-dom';
 import styles from './Login.module.css';  // 使用CSS模块化
 import gifAnimation from './animation.gif'; // 引用 GIF 文件
+import pngImage from './封面.png'; // 引用 PNG 文件
+
 
 function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(''); // 添加错误状态
     const [showGIF, setShowGIF] = useState(true); // 管理 GIF 的显示状态
+    const [showIMG, setShowIMG] = useState(true);
     const navigate = useNavigate();
 
     const handleLogin = async () => {
@@ -26,11 +29,21 @@ function Login() {
         setShowGIF(false);
     };
 
+    const handleIMGClick = () => {
+        setShowIMG(false);
+    };
+
+
     return (
         <div className={styles.loginContainer}>
             {showGIF && (
                 <div className={styles.gifOverlay} onClick={handleGIFClick}>
                     <img src={gifAnimation} className={styles.gif} alt="GIF Animation" />
+                </div>
+            )}
+            {showIMG && (
+                <div className={styles.imgOverlay} onClick={handleIMGClick}>
+                    <img src={pngImage} alt="IMG" className={styles.gif} />
                 </div>
             )}
             <h2>Login</h2>
