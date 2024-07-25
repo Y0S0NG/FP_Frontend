@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import axios from '../axiosConfig';
 import { useNavigate, Link } from 'react-router-dom';
 import styles from './Login.module.css';  // 使用CSS模块化
-import gifAnimation from './animation.gif'; // 引用 GIF 文件
-import pngImage from './封面.png'; // 引用 PNG 文件
 
 
 function Login() {
@@ -38,15 +36,15 @@ function Login() {
         <div className={styles.loginContainer}>
             {showGIF && (
                 <div className={styles.gifOverlay} onClick={handleGIFClick}>
-                    <img src={gifAnimation} className={styles.gif} alt="GIF Animation" />
+                    <img src={`${process.env.PUBLIC_URL}/animation.gif`} className={styles.gif} alt="Animation" />
                 </div>
             )}
             {showIMG && (
                 <div className={styles.imgOverlay} onClick={handleIMGClick}>
-                    <img src={pngImage} alt="IMG" className={styles.gif} />
+                    <img src={`${process.env.PUBLIC_URL}/families.png`} className={styles.gif} alt="IMG" />
                 </div>
             )}
-            <h2>Login</h2>
+            <h2>登录</h2>
             {error && <p className={styles.errorMessage}>{error}</p>} {/* 显示错误消息 */}
             <input
                 type="text"

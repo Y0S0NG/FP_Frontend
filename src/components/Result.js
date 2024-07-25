@@ -1,11 +1,10 @@
 import React from 'react';
 import styles from './Result.module.css';
-import gifAnimation from './Thank_You.gif'; // 引用 GIF 文件
 
 function GifDisplay() {
     return (
         <div className={styles.centeredContainer}>
-            <img src={gifAnimation} className={styles.gif} alt="GIF Animation" />
+            <img src={`${process.env.PUBLIC_URL}/Thank_You.gif`} className={styles.gif} alt="Animation" />
         </div>
     );
 }
