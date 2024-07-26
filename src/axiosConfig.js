@@ -1,7 +1,7 @@
 // src/axiosConfig.js
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://msn-family-program-71051663721a.herokuapp.com/';
+axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 axios.interceptors.request.use(
     config => {
         const token = localStorage.getItem('token');
