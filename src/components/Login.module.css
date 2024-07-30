@@ -20,6 +20,13 @@ body {
     background-attachment: fixed;
 }
 
+/* Mobile styles */
+@media (max-width: 600px) {
+    body {
+        background-attachment: scroll;
+    }
+}
+
 .gifOverlay {
     position: fixed;
     top: 0;
