@@ -9,7 +9,23 @@
     position: absolute;
     top: 10%;
     left: 50%;
-    margin-left: -300px;
+    transform: translateX(-50%);
+    box-sizing: border-box;
+}
+
+/* Mobile styles */
+@media (max-width: 600px) {
+    .quizContainer {
+        width: 90%;
+        padding: 20px;
+        top: 5%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .choiceButton, .submitButton {
+        max-width: 100%;
+    }
 }
 
 .quizContainer h2 {
