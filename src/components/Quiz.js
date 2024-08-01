@@ -59,26 +59,28 @@ function Quiz() {
     };
 
     return (
-        <div className={styles.quizContainer}>
-            <h2>请完成以下所有问题</h2>
-            <ErrorModal message={error} onClose={closeErrorModal} /> {/* 显示错误弹窗 */}
-            {questions.map((question) => (
-                <div key={question.id} className={styles.questionContainer}>
-                    <p className={styles.questionText}>{question.text}</p>
-                    <div className={styles.choicesContainer}>
-                        {question.choices.map((choice) => (
-                            <button
-                                key={choice.id}
-                                onClick={() => handleAnswer(question.id, choice.id, question.is_multiple_choice)}
-                                className={`${styles.choiceButton} ${question.is_multiple_choice ? (answers[question.id]?.includes(choice.id) ? styles.selected : '') : (answers[question.id] === choice.id ? styles.selected : '')}`}
-                            >
-                                {choice.text}
-                            </button>
-                        ))}
+        <div>
+            {error && <ErrorModal message={error} onClose={closeErrorModal} />} {/* 显示错误弹窗 */}
+            <div className={styles.quizContainer}>
+                <h2>请完成以下所有问题</h2>
+                {questions.map((question) => (
+                    <div key={question.id} className={styles.questionContainer}>
+                        <p className={styles.questionText}>{question.text}</p>
+                        <div className={styles.choicesContainer}>
+                            {question.choices.map((choice) => (
+                                <button
+                                    key={choice.id}
+                                    onClick={() => handleAnswer(question.id, choice.id, question.is_multiple_choice)}
+                                    className={`${styles.choiceButton} ${question.is_multiple_choice ? (answers[question.id]?.includes(choice.id) ? styles.selected : '') : (answers[question.id] === choice.id ? styles.selected : '')}`}
+                                >
+                                    {choice.text}
+                                </button>
+                            ))}
+                        </div>
                     </div>
-                </div>
-            ))}
-            <button onClick={handleSubmit} className={styles.submitButton}>Submit</button>
+                ))}
+                <button onClick={handleSubmit} className={styles.submitButton}>Submit</button>
+            </div>
         </div>
     );
 }
