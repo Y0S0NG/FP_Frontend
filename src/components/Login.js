@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from '../axiosConfig';
 import { useNavigate, Link } from 'react-router-dom';
 import styles from './Login.module.css';  // 使用CSS模块化
-
+import ErrorModal from './ErrorModal';    // 引入ErrorModal组件
 
 function Login() {
     const [username, setUsername] = useState('');
@@ -31,6 +31,9 @@ function Login() {
         setShowIMG(false);
     };
 
+    const closeErrorModal = () => {
+        setError(''); // 清除错误消息
+    };
 
     return (
         <div className={styles.loginContainer}>
@@ -45,7 +48,6 @@ function Login() {
                 </div>
             )}
             <h2>登录</h2>
-            {error && <p className={styles.errorMessage}>{error}</p>} {/* 显示错误消息 */}
             <input
                 type="text"
                 placeholder="姓名-computingID"
@@ -64,6 +66,8 @@ function Login() {
             <p className={styles.linkText}>
                 Don't have an account? <Link to="/register">Register</Link>
             </p>
+
+            <ErrorModal message={error} onClose={closeErrorModal} />
         </div>
     );
 }

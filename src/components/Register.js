@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from '../axiosConfig';
 import { useNavigate } from 'react-router-dom';
 import styles from './Login.module.css';
+import ErrorModal from './ErrorModal';
 
 function Register() {
     const [username, setUsername] = useState('');
@@ -17,7 +18,7 @@ function Register() {
 
     const handleRegister = async () => {
         if (!isValidUsername(username)) {
-            setErrorMessage("用户名格式不正确，请使用 '姓名-computingID' 的格式");
+            setErrorMessage("用户名需使用 '姓名-computingID' 的格式");
             return;
         }
 
@@ -28,6 +29,10 @@ function Register() {
             console.error('Registration failed', error);
             setErrorMessage('注册失败，请重试。');
         }
+    };
+
+    const closeErrorModal = () => {
+        setErrorMessage('');
     };
 
     return (
@@ -47,8 +52,9 @@ function Register() {
                 onChange={(e) => setPassword(e.target.value)}
                 className={styles.inputField}
             />
-            {errorMessage && <p className={styles.error}>{errorMessage}</p>}
             <button onClick={handleRegister} className={styles.button}>Register</button>
+
+            <ErrorModal message={errorMessage} onClose={closeErrorModal} />
         </div>
     );
 }
