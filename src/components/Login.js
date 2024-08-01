@@ -19,7 +19,7 @@ function Login() {
             navigate('/quiz');
         } catch (error) {
             console.error('Login failed', error);
-            setError('Invalid username or password'); // 设置错误消息
+            setError('用户名或密码错误'); // 设置错误消息
         }
     };
 
