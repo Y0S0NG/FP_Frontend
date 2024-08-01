@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from '../axiosConfig';
 import { useNavigate } from 'react-router-dom';
 import styles from './Quiz.module.css';  // 使用CSS模块化
+import ErrorModal from './ErrorModal';    // 引入ErrorModal组件
 
 function Quiz() {
     const [questions, setQuestions] = useState([]);
@@ -16,6 +17,7 @@ function Quiz() {
                 setQuestions(response.data);
             } catch (error) {
                 console.error('Error fetching questions', error);
+                setError('无法加载问题，请稍后再试。'); // 设置错误消息
             }
         };
         fetchQuestions();
@@ -47,14 +49,19 @@ function Quiz() {
                 setError(error.response.data.error); // 设置错误消息
             } else {
                 console.error('Error submitting quiz', error);
+                setError('提交测验时出错，请稍后再试。'); // 设置错误消息
             }
         }
+    };
+
+    const closeErrorModal = () => {
+        setError(''); // 清除错误消息
     };
 
     return (
         <div className={styles.quizContainer}>
             <h2>请完成以下所有问题</h2>
-            {error && <p className={styles.errorMessage}>{error}</p>}
+            <ErrorModal message={error} onClose={closeErrorModal} /> {/* 显示错误弹窗 */}
             {questions.map((question) => (
                 <div key={question.id} className={styles.questionContainer}>
                     <p className={styles.questionText}>{question.text}</p>
